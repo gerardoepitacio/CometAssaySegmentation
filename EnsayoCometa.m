@@ -4,17 +4,15 @@ clear all
 close all
 %% Select Image and thresholding.
 tic
-Filter={'*.jpg;*.jpeg;*.png;*.tif;*.bmp'};
-[FileName, FilePath]=uigetfile(Filter);
-pause(0.01);
-if FileName==0
+FullFileName = ReadFile();
+if FullFileName == 0
     return;
 end
-FullFileName = [FilePath FileName];
+
 f1 = imread(FullFileName);
 g = rgb2gray(f1);
 filtro = 'average';
-f = imfilter(g,fspecial(filtro, 10));
+f = imfilter(g,fspecial(filtro, 11));
 tsd = localthresh(f, ones(3),1,1.1,'global');
 bwW = bwareaopen(tsd,5000);
 bw = imclearborder(bwW);
@@ -26,14 +24,15 @@ box = cat(1, s.BoundingBox);
 centroids = cat(1, s.Centroid);
 for i = 1 : boxLen
     subImage = imcrop(g, (box(i,:)-1));
-    %subImage(~s(i).Image) = 0;
+    %subImage(~s(i).Image) = 0;     %crop with binary image shape
     [m, n, c] = size(subImage);
     [Patrones, Img] = ObtenerPatrones(subImage);
     opts = [nan;nan;nan;0];
+%%%     [centers, U, obj_fcn] = fcm(Patrones, 4, opts);
     [centers, U, obj_fcn] = fcm(Patrones, 4, opts);
     Regiones = ObtenerRegiones(U, centers, m, n);
-    figure,imshow(Img);
-    figure,imshow(Regiones);
+%     figure,imshow(Img);
+     figure,imshow(Regiones);
 %% plotting
 % %     figure,plot(Patrones(:,1),Patrones(:,2),'o');
 % %              xlabel('Pixel Value')
@@ -71,20 +70,20 @@ for i = 1 : boxLen
 end
 
 %% Labeling.
-figure,imshow(f1);
-hold on
-       % X               Y
-plot(centroids(:,1), centroids(:,2), 'b*')
-for i = 1 : boxLen
-rectangle('Position', box(i,:), 'EdgeColor', 'red');
-end
-
-            %X               Y
-plot(centroids(:,1), centroids(:,2), 'b*')
-[boxLen col] = size(box);
-for i = 1 : boxLen
-rectangle('Position', box(i,:), 'EdgeColor', 'red');
-end
-hold off
+% % % figure,imshow(f1);
+% % % hold on
+% % %        % X               Y
+% % % plot(centroids(:,1), centroids(:,2), 'b*')
+% % % for i = 1 : boxLen
+% % % rectangle('Position', box(i,:), 'EdgeColor', 'red');
+% % % end
+% % % 
+% % %             %X               Y
+% % % plot(centroids(:,1), centroids(:,2), 'b*')
+% % % [boxLen col] = size(box);
+% % % for i = 1 : boxLen
+% % % rectangle('Position', box(i,:), 'EdgeColor', 'red');
+% % % end
+% % % hold off
 
 toc

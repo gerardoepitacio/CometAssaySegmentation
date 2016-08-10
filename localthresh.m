@@ -10,11 +10,10 @@ function g = localthresh(f, nhood, a, b, meantype)
 %
 % The segmented image is given by
 %
-% if (F > A*SIG) AND (F > B*MEAN)
-% G
+%       1   if (F > A*SIG) AND (F > B*MEAN)
+%   G=
+%       0   otherwise
 %
-%
-%o otherwise
 % where SIG is an array of the same size as F containing the local
 % standard deviations. If MEANTYPE = 'local' (the default), then
 % MEAN is an array of local means. If MEANTYPE = 'global', then
@@ -22,12 +21,12 @@ function g = localthresh(f, nhood, a, b, meantype)
 % are nonnegative scalars.
 
 % Intialize.
-f = (f) ;
+f = im2double(f) ;
 % Compute the local standard deviations.
 SIG = stdfilt(f, nhood);
 % Compute MEAN.
-if nargin == 5 && strcmp(meantype, 'global' )
-MEAN = mean2 (f) ;
+if nargin == 5 && strcmp(meantype, 'global')
+MEAN = mean2(f) ;
 else
 MEAN = localmean(f, nhood); % This is a custom function.
 end

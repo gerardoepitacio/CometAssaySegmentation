@@ -5,11 +5,11 @@ str = sprintf('%5s%10s%10s%10s%10s%10s%10s','#', 'Solidity', 'Symmetry', 'Hratio
 disp(str);
 for i = 1 : Elements
     Roi = Stats(i);
-    figure, imshow(Roi.Image);
+    figure('Name','Binary Image'), imshow(Roi.Image);
     [height, width] = size(Roi.Image);
     Log = sprintf('%5d',i);
     Valid = ' ';
-    if Roi.Solidity < 0.7
+    if Roi.Solidity < 0.6
         Invalid(i) = true;
         Valid = '*';
     end

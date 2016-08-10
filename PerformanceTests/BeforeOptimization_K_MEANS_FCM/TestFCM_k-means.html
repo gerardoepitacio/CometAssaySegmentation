@@ -1,0 +1,1009 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+    <link rel="stylesheet"
+          href="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\matlab-report-styles.css"
+          type="text/css"/>
+    <title>Function details for EnsayoCometa_K_MEANS</title>
+    <link rel="stylesheet"
+          href="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\matlab-report-styles.css"
+          type="text/css"/>
+</head>
+<body><span style="font-size:14pt; background:#FFE4B0">EnsayoCometa_K_MEANS (1 call, 41.019 sec)</span><br/><i>Generated
+    10-Aug-2016 14:00:02 using cpu time.</i><br/>script in file <a
+        href="matlab: edit(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'))">C:\Users\Gerardo\Dropbox\INGENIERIA\MATLAB\LENOVO\ENSAYO
+    COMETA\matlab\EnsayoCometa_K_MEANS.m</a><br/><a href="matlab: stripanchors">Copy to new window for comparing
+    multiple runs</a>
+<p><span class="warning">This function changed during profiling or before generation of this report. Results may be incomplete or inaccurate.</span>
+</p>
+<div class="grayline"/>
+<form method="GET" action="matlab:profviewgateway"><input type="submit" value="Refresh"/><input type="hidden"
+                                                                                                name="profileIndex"
+                                                                                                value="6"/>
+    <table>
+        <tr>
+            <td><input type="checkbox" name="parentDisplayMode" checked/>Show parent functions</td>
+            <td><input type="checkbox" name="busylineDisplayMode" checked/>Show busy lines</td>
+            <td><input type="checkbox" name="childrenDisplayMode" checked/>Show child functions</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="mlintDisplayMode" checked/>Show Code Analyzer results</td>
+            <td><input type="checkbox" name="coverageDisplayMode" checked/>Show file coverage</td>
+            <td><input type="checkbox" name="listingDisplayMode" checked/>Show function listing</td>
+        </tr>
+    </table>
+</form>
+<div class="grayline"/>
+<strong>Parents</strong> (calling functions)<br/> No parent
+<div class="grayline"/>
+<strong>Lines where the most time was spent</strong><br/>
+<p>
+<table border=0 cellspacing=0 cellpadding=6>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Line Number</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Code</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Calls</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Total Time</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">% Time</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Time Plot</td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="#Line30">30</a></td>
+        <td class="td-linebottomrt">
+            <pre>[Patrones, Img] = ObtenerPatro...</pre>
+        </td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">21.127 s</td>
+        <td class="td-linebottomrt" class="td-linebottomrt">51.5%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=52
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="#Line7">7</a></td>
+        <td class="td-linebottomrt">
+            <pre>FullFileName = ReadFile();</pre>
+        </td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">6.065 s</td>
+        <td class="td-linebottomrt" class="td-linebottomrt">14.8%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=15
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="#Line58">58</a></td>
+        <td class="td-linebottomrt">
+            <pre>[centers, U, obj_fcn] = fcm(Pa...</pre>
+        </td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">5.714 s</td>
+        <td class="td-linebottomrt" class="td-linebottomrt">13.9%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=14
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="#Line59">59</a></td>
+        <td class="td-linebottomrt">
+            <pre>Regiones = ObtenerRegiones(U, ...</pre>
+        </td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">2.378 s</td>
+        <td class="td-linebottomrt" class="td-linebottomrt">5.8%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=6
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="#Line41">41</a></td>
+        <td class="td-linebottomrt">
+            <pre>Clase = ObtenerKClase(KCluster...</pre>
+        </td>
+        <td class="td-linebottomrt">184960</td>
+        <td class="td-linebottomrt">1.719 s</td>
+        <td class="td-linebottomrt" class="td-linebottomrt">4.2%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=4
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt">All other lines</td>
+        <td class="td-linebottomrt">&nbsp;</td>
+        <td class="td-linebottomrt">&nbsp;</td>
+        <td class="td-linebottomrt">4.017 s</td>
+        <td class="td-linebottomrt">9.8%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=10
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Totals</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">&nbsp;</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">&nbsp;</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">41.019 s</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">100%</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">&nbsp;</td>
+    </tr>
+</table>
+<div class="grayline"/>
+<b>Children</b> (called functions)<br/>
+<p>
+<table border=0 cellspacing=0 cellpadding=6>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Function Name</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Function Type</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Calls</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Total Time</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">% Time</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Time Plot</td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(155);">ObtenerPatrones</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">21.126 s</td>
+        <td class="td-linebottomrt">51.5%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=52
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(90);">ReadFile</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">6.062 s</td>
+        <td class="td-linebottomrt">14.8%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=15
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(350);">fcm</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">5.712 s</td>
+        <td class="td-linebottomrt">13.9%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=14
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(345);">ObtenerRegiones</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">2.377 s</td>
+        <td class="td-linebottomrt">5.8%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=6
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(320);">kmeans</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">1.118 s</td>
+        <td class="td-linebottomrt">2.7%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=3
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(346);">ObtenerKClase</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">184960</td>
+        <td class="td-linebottomrt">0.828 s</td>
+        <td class="td-linebottomrt">2.0%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=2
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(299);">GetComets</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.465 s</td>
+        <td class="td-linebottomrt">1.1%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=1
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(190);">regionprops</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.196 s</td>
+        <td class="td-linebottomrt">0.5%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(163);">imshow</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">2</td>
+        <td class="td-linebottomrt">0.144 s</td>
+        <td class="td-linebottomrt">0.4%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(152);">imclearborder</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.124 s</td>
+        <td class="td-linebottomrt">0.3%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(91);">imread</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.099 s</td>
+        <td class="td-linebottomrt">0.2%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(175);">localthresh</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.084 s</td>
+        <td class="td-linebottomrt">0.2%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(145);">imfilter</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.037 s</td>
+        <td class="td-linebottomrt">0.1%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(184);">bwareaopen</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.020 s</td>
+        <td class="td-linebottomrt">0.0%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(128);">rgb2gray</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.012 s</td>
+        <td class="td-linebottomrt">0.0%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(347);">filemenufcn</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.011 s</td>
+        <td class="td-linebottomrt">0.0%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(304);">imcrop</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.009 s</td>
+        <td class="td-linebottomrt">0.0%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(144);">fspecial</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.009 s</td>
+        <td class="td-linebottomrt">0.0%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(1);">close</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.005 s</td>
+        <td class="td-linebottomrt">0.0%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="matlab: profview(343);">sortrows</a></td>
+        <td class="td-linebottomrt">function</td>
+        <td class="td-linebottomrt">1</td>
+        <td class="td-linebottomrt">0.002 s</td>
+        <td class="td-linebottomrt">0.0%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=0
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt">Self time (built-ins, overhead, etc.)</td>
+        <td class="td-linebottomrt">&nbsp;</td>
+        <td class="td-linebottomrt">&nbsp;</td>
+        <td class="td-linebottomrt">2.580 s</td>
+        <td class="td-linebottomrt">6.3%</td>
+        <td class="td-linebottomrt"><img
+                src="file:///C:\Program Files\MATLAB\R2013b\toolbox\matlab\codetools\private\one-pixel.gif" width=6
+                height=10></td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Totals</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">&nbsp;</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">&nbsp;</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">41.019 s</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">100%</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">&nbsp;</td>
+    </tr>
+</table>
+<div class="grayline"/>
+<strong>Code Analyzer results</strong><br/>
+<table border=0 cellspacing=0 cellpadding=6>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Line number</td>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Message</td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt"><a href="#Line24">24</a></td>
+        <td class="td-linebottomrt"><span class="mono">Best practice is to separate output variables with commas.</span>
+        </td>
+    </tr>
+</table>
+<div class="grayline"/>
+<strong>Coverage results</strong><br/><a
+        href="matlab: coveragerpt(fileparts(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m')))">Show
+    coverage for parent directory</a> <br/>
+<table border=0 cellspacing=0 cellpadding=6>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Total lines in function</td>
+        <td class="td-linebottomrt">63</td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Non-code lines (comments, blank lines)</td>
+        <td class="td-linebottomrt">7</td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Code lines (lines that can run)</td>
+        <td class="td-linebottomrt">56</td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Code lines that did run</td>
+        <td class="td-linebottomrt">54</td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Code lines that did not run</td>
+        <td class="td-linebottomrt">2</td>
+    </tr>
+    <tr>
+        <td class="td-linebottomrt" bgcolor="#F0F0F0">Coverage (did run/can run)</td>
+        <td class="td-linebottomrt">96.43 %</td>
+    </tr>
+</table>
+<div class="grayline"/>
+<b>Function listing</b><br/>
+<form method="GET" action="matlab:profviewgateway">Color highlight code according to <input type="hidden"
+                                                                                            name="profileIndex"
+                                                                                            value="6"/><select
+        name="hiliteOption" onChange="this.form.submit()">
+    <option selected value="time">time</option>
+    <option value="numcalls">numcalls</option>
+    <option value="coverage">coverage</option>
+    <option value="noncoverage">noncoverage</option>
+    <option value="mlint">code analyzer</option>
+    <option value="none">none</option>
+</select></form>
+<table border="0" cellpadding="1" cellspacing="5">
+    <style> td, th {
+        text-align: center;
+    }
+
+    .leftAligned {
+        text-align: left;
+    }</style>
+    <tr>
+        <th><span style="color: #FF0000; font-weight: bold; text-decoration: none">time</span></th>
+        <th><span style="color: #0000FF; font-weight: bold; text-decoration: none">calls</span></th>
+        <th class="leftAligned"><span style="font-weight: bold; text-decoration: none">  line</span></th>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">&lt; 0.01 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),1)">
+                1</a></span> <span style="color: #000000; background: #FFFFFF;">clear </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),2)">
+                2</a></span> <span style="color: #000000; background: #FFFFFF;">clc </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.03 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),3)">
+                3</a></span> <span style="color: #000000; background: #FFFFFF;">clear all </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.02 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),4)">
+                4</a></span> <span style="color: #000000; background: #FFFFFF;"><a href="matlab: profview(1);">close</a> all </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td class="leftAligned">
+            <pre><span style="color: #A0A0A0">   5</span> <span style="color: #228B22; background: #FFFFFF;">%% Select Image and thresholding.</span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),6)">
+                6</a></span> <span style="color: #000000; background: #FFFFFF;">tic </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  6.06 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),7)">
+                7</a></span> <a name="Line7"></a><span style="color: #000000; background: #FFE2E2;">FullFileName = <a
+                    href="matlab: profview(90);">ReadFile</a>(); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),8)">
+                8</a></span> <span style="color: #000000; background: #FFFFFF;">if FullFileName == 0 </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td class="leftAligned">
+            <pre><span style="color: #A0A0A0">   9</span> <span
+                    style="color: #A0A0A0; background: #FFFFFF;">    return;</span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td class="leftAligned">
+            <pre><span style="color: #A0A0A0">  10</span> <span
+                    style="color: #A0A0A0; background: #FFFFFF;">end</span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td class="leftAligned">
+            <pre><span style="color: #A0A0A0">  11</span> <span
+                    style="color: #228B22; background: #FFFFFF;"></span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.10 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),12)">
+                12</a></span> <span style="color: #000000; background: #FFFFFF;">f1 = <a href="matlab: profview(91);">imread</a>(FullFileName); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.02 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),13)">
+                13</a></span> <span style="color: #000000; background: #FFFFFF;">g = <a href="matlab: profview(128);">rgb2gray</a>(f1); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),14)">
+                14</a></span> <span style="color: #000000; background: #FFFFFF;">filtro = 'average'; </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.06 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),15)">
+                15</a></span> <span style="color: #000000; background: #FFFFFF;">f = <a href="matlab: profview(145);">imfilter</a>(g,<a
+                    href="matlab: profview(144);">fspecial</a>(filtro, 11)); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),16)">
+                16</a></span> <span style="color: #000000; background: #FFFFFF;">subImage = f; </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.09 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),17)">
+                17</a></span> <span style="color: #000000; background: #FFFFFF;">tsd = <a href="matlab: profview(175);">localthresh</a>(f, ones(3),1,1.1,'global'); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.02 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),18)">
+                18</a></span> <span style="color: #000000; background: #FFFFFF;">bwW = <a href="matlab: profview(184);">bwareaopen</a>(tsd,5000); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.12 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),19)">
+                19</a></span> <span style="color: #000000; background: #FFFFFF;">bw = <a href="matlab: profview(152);">imclearborder</a>(bwW); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td class="leftAligned">
+            <pre><span style="color: #A0A0A0">  20</span> <span style="color: #228B22; background: #FFFFFF;">%% Image regions and comets segmentation.</span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.21 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),21)">
+                21</a></span> <span style="color: #000000; background: #FFFFFF;">s = <a href="matlab: profview(190);">regionprops</a>(bw, 'all'); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.47 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),22)">
+                22</a></span> <span style="color: #000000; background: #FFFFFF;">s = <a href="matlab: profview(299);">GetComets</a>(s); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),23)">
+                23</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">box = cat(1, s.BoundingBox); </span><br/></pre>
+        </td>
+    </tr>
+    <tr><a name="Line24"></a>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),24)">
+                24</a></span> <span style="color: #000000; background: #FFFFFF;">[boxLen col] = size(box); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),25)">
+                25</a></span> <span style="color: #000000; background: #FFFFFF;">centroids = cat(1, s.Centroid); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">&lt; 0.01 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),26)">
+                26</a></span> <span style="color: #000000; background: #FFFFFF;">for p = 1 : boxLen </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.01 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),27)">
+                27</a></span> <span style="color: #000000; background: #FFFFFF;">    subImage = <a
+                    href="matlab: profview(304);">imcrop</a>(g, (box(p,:)-1)); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td class="leftAligned">
+            <pre><span style="color: #A0A0A0">  28</span> <span style="color: #228B22; background: #FFFFFF;">    %subImage(~s(i).Image) = 0;     %crop with binary image shape</span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),29)">
+                29</a></span> <span style="color: #000000; background: #FFFFFF;">    [m, n, c] = size(subImage); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000"> 21.13 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),30)">
+                30</a></span> <a name="Line30"></a><span style="color: #000000; background: #FF8080;">    [Patrones, Img] = <a
+                    href="matlab: profview(155);">ObtenerPatrones</a>(subImage); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td class="leftAligned">
+            <pre><span style="color: #A0A0A0">  31</span> <span style="color: #228B22; background: #FFFFFF;">    %% K-MEANS</span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  1.13 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),32)">
+                32</a></span> <span style="color: #000000; background: #FFFFFF;">    [cidx, ctrs] = <a
+                    href="matlab: profview(320);">kmeans</a>(Patrones, 4); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),33)">
+                33</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">    VectorBrillo = ctrs(:,1); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">&lt; 0.01 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),34)">
+                34</a></span> <span style="color: #000000; background: #FFFFFF;">    VectorBrilloOrd = <a
+                    href="matlab: profview(343);">sortrows</a>(VectorBrillo,1); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),35)">
+                35</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">    img = uint8(zeros(m,n,3)); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),36)">
+                36</a></span> <span style="color: #000000; background: #FFFFFF;">    k = 1; </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),37)">
+                37</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">    [pixels, rows] = size(cidx); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),38)">
+                38</a></span> <span style="color: #000000; background: #FFFFFF;">    for i = 1 : m </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">    289 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),39)">
+                39</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">        for j = 1 : n </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.06 </span></td>
+        <td><span style="color: #0000FF"> 184960 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),40)">
+                40</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">           KCluster = cidx(k,1); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  1.72 </span></td>
+        <td><span style="color: #0000FF"> 184960 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),41)">
+                41</a></span> <a name="Line41"></a><span style="color: #000000; background: #FFFFFF;">           Clase = <a
+                    href="matlab: profview(346);">ObtenerKClase</a>(KCluster, VectorBrillo, VectorBrilloOrd); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.04 </span></td>
+        <td><span style="color: #0000FF"> 184960 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),42)">
+                42</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">          switch Clase </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.03 </span></td>
+        <td><span style="color: #0000FF"> 184960 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),43)">
+                43</a></span> <span style="color: #000000; background: #FFFFFF;">           case 1 </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.37 </span></td>
+        <td><span style="color: #0000FF"> 120319 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),44)">
+                44</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">               img(i,j,:) = [0 0 0]; </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">&lt; 0.01 </span></td>
+        <td><span style="color: #0000FF">  64641 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),45)">
+                45</a></span> <span style="color: #000000; background: #FFFFFF;">           case 2 </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.15 </span></td>
+        <td><span style="color: #0000FF">  40543 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),46)">
+                46</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">               img(i,j,:) = [0 255 0]; </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">&lt; 0.01 </span></td>
+        <td><span style="color: #0000FF">  24098 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),47)">
+                47</a></span> <span style="color: #000000; background: #FFFFFF;">          case 3 </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.04 </span></td>
+        <td><span style="color: #0000FF">  12464 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),48)">
+                48</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">              img(i,j,:) = [0 0 255]; </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">  11634 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),49)">
+                49</a></span> <span style="color: #000000; background: #FFFFFF;">          case 4 </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.03 </span></td>
+        <td><span style="color: #0000FF">  11634 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),50)">
+                50</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">              img(i,j,:) = [255 0 0]; </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">&lt; 0.01 </span></td>
+        <td><span style="color: #0000FF">  11634 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),51)">
+                51</a></span> <span style="color: #000000; background: #FFFFFF;">          end </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.27 </span></td>
+        <td><span style="color: #0000FF"> 184960 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),52)">
+                52</a></span> <span style="color: #000000; background: #FFFFFF;">            k=k+1; </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.42 </span></td>
+        <td><span style="color: #0000FF"> 184960 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),53)">
+                53</a></span> <span style="color: #000000; background: #FFFFFF;">        end </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">&lt; 0.01 </span></td>
+        <td><span style="color: #0000FF">    289 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),54)">
+                54</a></span> <span style="color: #000000; background: #FFFFFF;">    end </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.17 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),55)">
+                55</a></span> <span style="color: #000000; background: #FFFFFF;">    figure('Name','K-MEANS CLUSTERING'),<a
+                    href="matlab: profview(163);">imshow</a>(img); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td class="leftAligned">
+            <pre><span style="color: #A0A0A0">  56</span> <span style="color: #228B22; background: #FFFFFF;">    %% FUZZY C-MEANS</span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),57)">
+                57</a></span> <span
+                    style="color: #000000; background: #FFFFFF;">     opts = [nan;nan;nan;0]; </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  5.71 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),58)">
+                58</a></span> <a name="Line58"></a><span style="color: #000000; background: #FFE2E2;">    [centers, U, obj_fcn] = <a
+                    href="matlab: profview(350);">fcm</a>(Patrones, 4, opts); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  2.38 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),59)">
+                59</a></span> <a name="Line59"></a><span style="color: #000000; background: #FFF0F0;">    Regiones = <a
+                    href="matlab: profview(345);">ObtenerRegiones</a>(U, centers, m, n); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">  0.10 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),60)">
+                60</a></span> <span style="color: #000000; background: #FFFFFF;">    figure('Name','FUZZY C-MEANS CLUSTERING'),<a
+                    href="matlab: profview(163);">imshow</a>(Regiones); </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),61)">
+                61</a></span> <span style="color: #000000; background: #FFFFFF;">end </span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td class="leftAligned">
+            <pre><span style="color: #A0A0A0">  62</span> <span
+                    style="color: #228B22; background: #FFFFFF;"></span><br/></pre>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color: #FF0000">&lt; 0.01 </span></td>
+        <td><span style="color: #0000FF">      1 </span></td>
+        <td class="leftAligned">
+            <pre><span style="color: #000000; font-weight: bold"><a
+                    href="matlab: opentoline(urldecode('C%3A%5CUsers%5CGerardo%5CDropbox%5CINGENIERIA%5CMATLAB%5CLENOVO%5CENSAYO+COMETA%5Cmatlab%5CEnsayoCometa_K_MEANS.m'),63)">
+                63</a></span> <span style="color: #000000; background: #FFFFFF;">toc </span><br/></pre>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

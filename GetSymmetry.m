@@ -20,7 +20,7 @@ for i = 1 : cols
     absdy = absdy + (abs(Sum2 - Sum1) / cnt1);
 end
 
-Symmetry = absdy / rows;
+Symmetry = absdy / cols;
 
 
 % % % % //int counter = 0;
