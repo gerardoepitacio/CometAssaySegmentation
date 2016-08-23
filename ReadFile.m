@@ -1,8 +1,6 @@
-function FullFileName = ReadFile()
+function [FileName, FilePath] = ReadFile()
 Filter={'*.jpg;*.jpeg;*.png;*.tif;*.bmp'};
-[FileName, FilePath]=uigetfile(Filter);
+Title='Selecciona una imagen';
+[FileName, FilePath] = uigetfile(Filter, Title, 'MultiSelect', 'on');
 pause(0.01);
-if FileName == 0
-    FullFileName = 0;
-end
-FullFileName = [FilePath FileName];
+
