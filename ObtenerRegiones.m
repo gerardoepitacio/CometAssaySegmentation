@@ -1,4 +1,4 @@
-function Img = ObtenerRegiones(Clases, Centro,m, n)
+function [Img, Areas] = ObtenerRegiones(Clases, Centro,m, n)
 % ObtenerRegiones, devuelve las regiones de una imagen a partir de la
 % matriz de pertenencia y la matriz de centroides devueltos del algoritmo
 % de clustering Fuzzy C-Means
@@ -17,25 +17,34 @@ function Img = ObtenerRegiones(Clases, Centro,m, n)
     Clases(:,m*n+1)= Centro(:,1);
     B = sortrows(Clases,m*n+1);
     B(:,m*n+1) = [];
+    
+    Total = m*n;
+    BG = 0;
+    Nucleo = 0;
+    Halo = 0;
+    Cola = 0;
     for i = 1 : m
         for j = 1 : n
            Clase =  ObtenerClase(B(:,k));
           switch Clase
            case 1
-             % img(i,j) = (Centro(1,1));
               Img(i,j,:) = [0 0 0];
+              BG = BG + 1;
            case 2
-            %img(i,j) = (Centro(2,1));
             Img(i,j,:) = [0 255 0];
+            Cola = Cola + 1;
           case 3
-             %img(i,j) = (Centro(3,1));
              Img(i,j,:) = [0 0 255];
+             Halo = Halo + 1;
           case 4
-             %img(i,j) = (Centro(4,1));
              Img(i,j,:) = [255 0 0];
+             Nucleo = Nucleo + 1;
           end
             k=k+1;
         end
     end
+    Areas = {'FCM', Total, BG, Nucleo, Halo, Cola};
+    %str = sprintf('%5s%10s%10d%10d%10d%10d%10d', '', 'FCM', Total, BG, Nucleo, Halo, Cola);
+    %disp(str);
 end
 

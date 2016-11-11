@@ -1,6 +1,6 @@
 function [paterns,Img] = ObtenerPatrones(GrayImage, h, w)
     GrayImage = im2double(GrayImage);
-% %     GrayImage = imadjust(GrayImage, [min(GrayImage(:)), max(GrayImage(:))], [0 1]);
+    GrayImage = imadjust(GrayImage, [min(GrayImage(:)), max(GrayImage(:))], [0 1]);
     stdImg = stdfilt(GrayImage, ones(11, 11));
     %meanImg = medfilt2(GrayImage, [11 11]);
     tam = h*w;
