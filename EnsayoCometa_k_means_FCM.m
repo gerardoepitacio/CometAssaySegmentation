@@ -26,7 +26,8 @@ for File=1 : length(FileNames)
     %% thresholding
     tsd = localthresh(f, ones(3), 1, 1.1, 'global');
     %bwW = bwareaopen(tsd, 400);
-    bwW = bwareaopen(tsd, 5000);
+    %bwW = bwareaopen(tsd, 5000);
+    bwW = bwareaopen(tsd, 3000);
     bw = imclearborder(bwW);
     %% Image regions and comets segmentation.
     s = regionprops(bw,  'Area', 'BoundingBox', 'Image', 'Solidity');
