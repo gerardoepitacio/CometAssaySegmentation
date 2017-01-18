@@ -44,7 +44,5 @@ function [Img, Areas] = ObtenerRegiones(Clases, Centro,m, n)
         end
     end
     Areas = {'FCM', Total, BG, Nucleo, Halo, Cola};
-    %str = sprintf('%5s%10s%10d%10d%10d%10d%10d', '', 'FCM', Total, BG, Nucleo, Halo, Cola);
-    %disp(str);
 end
 

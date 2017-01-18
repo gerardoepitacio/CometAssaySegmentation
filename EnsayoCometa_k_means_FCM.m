@@ -2,14 +2,24 @@ clear
 clc
 clear all
 close all
+% Off Warning: Image is too big to fit on screen
+warning('off', 'Images:initSize:adjustingMag');
 %% Select Image and thresholding.
 [FileNames, FilePath] = ReadFile();
 if FilePath == 0
     return;
 end
 
-Excel={0,9};
-Row = 3;
+Row = 2;
+RowFCM = 3;
+RowKMeans = 3;
+CometsProcessed = 0;
+Excel={'Imagen','#', '#Img', 'Algoritmo', 'Pixeles', 'Fondo', 'Núcleo', 'Halo', 'Cola', 'Tiempo'};
+%ExcelFCM=[{''}, {'RESULTADOS FCM'}];
+ExcelFCM(2, 1:10) = {'RESULTADOS FCM','#', '#', 'Algoritmo', 'FCM', 'FCM', 'FCM', 'FCM', 'FCM', 'FCM'};
+%ExcelKMeans=[{''}, {'RESULTADOS KMEANS'}];
+ExcelKMeans(2, 1:10) = {'RESULTADOS K-Means','#', '#', 'Algoritmo', 'K-Means', 'K-Means', 'K-Means', 'K-Means', 'K-Means', 'K-Means'};
+
 for File=1 : length(FileNames)
     if ischar(FileNames) == 0
         FileName = FileNames{File};
@@ -33,26 +43,27 @@ for File=1 : length(FileNames)
     s = regionprops(bw,  'Area', 'BoundingBox', 'Image', 'Solidity');
     fprintf('\n');
     
-    %% ROIs found
+    %% ROIs found and image log
     figure('NumberTitle', 'off', 'Name', FileName),imshow(f1);
     
     hold on
     box = cat(1, s.BoundingBox);
-    [boxLen col] = size(box);
-    for i = 1 : boxLen
+    ROIs = size(box);
+    for i = 1 : ROIs
         rectangle('Position', box(i,:), 'EdgeColor', 'red');
     end
     
-    s = GetComets(s);
+    s = GetComets(s, FileName);
     %% Region Segmentation
     box = cat(1, s.BoundingBox);
-    [boxLen col] = size(box);
-    %disp(sprintf('%5s%10s%10s%10s%10s%10s%10s', '', 'Area', 'Total', 'BG', 'Nucleo', 'Halo', 'Cola'));
+    [Comets col] = size(box);
     Excel(Row, 1) = {FileName};
-    
-    for p = 1 : boxLen
+    ExcelFCM(RowFCM, 1) = {FileName};
+    ExcelKMeans(RowKMeans, 1) = {FileName};
+    for p = 1 : Comets
+        CometsProcessed = CometsProcessed + 1;
         Excel(Row, 2) = {p};
-        
+        Excel(Row, 3) = {CometsProcessed};
         subImage = imcrop(g, (box(p,:)-1));
         [m, n, c] = size(subImage);
         [Patrones, Img] = ObtenerPatrones(subImage, m, n);
@@ -62,10 +73,11 @@ for File=1 : length(FileNames)
         Tiempo = toc;
         [img, Areas] = ObtenerKRegiones(ctrs, cidx, m, n);
         
-        Excel(Row, 3:8) = Areas;
-        Excel(Row, 9) = {Tiempo};
+        Excel(Row, 4:9) = Areas;
+        Excel(Row, 10) = {Tiempo};
+        ExcelKMeans(RowKMeans, 2:10) = Excel(Row, 2:10); 
         Row = Row + 1;
-        
+        RowKMeans = RowKMeans + 1;
         %% FUZZY C-MEANS
         opts = [nan;nan;nan;0];
         tic
@@ -74,23 +86,44 @@ for File=1 : length(FileNames)
         [Regiones, Areas]= ObtenerRegiones(U, centers, m, n);
         
         Excel(Row, 2) = {p};
-        Excel(Row, 3:8) = Areas;
-        Excel(Row, 9) = {Tiempo};
+        Excel(Row, 3) = {CometsProcessed};
+        Excel(Row, 4:9) = Areas;
+        Excel(Row, 10) = {Tiempo};
+        ExcelFCM(RowFCM, 2:10) = Excel(Row, 2:10); 
         Row = Row + 1;
-        
-        %% Showing results
+        RowFCM = RowFCM + 1;
+        %% Mostrando resultados
+        % Rectangulo sobre la imagen actual.
         rectangle('Position', box(p,:), 'EdgeColor', 'green');
+        text(box(p,1)+7, box(p,2)+20, sprintf('%d', CometsProcessed), 'Color', 'green', 'FontSize', 14);
         
+        %Regiones FCM y K-means.
 % %         figure('NumberTitle', 'off', 'Name',[num2str(File) '-' num2str(p) ' K-Means & FCM'])
 % %         subplot(1,2,1), subimage(img)
 % %         title('K-Means')
 % %         subplot(1,2,2), subimage(Regiones)
 % %         title('FCM')
+
     end
     hold off
     if ischar(FileNames) == 1
         break;
     end
 end
-xlswrite('Resultados', Excel);
+Comets= CometsProcessed+2;
+Validacion(1,1:10) = {'Background', '', 'Nucleo', '', 'Halo', '', 'Cola', '', 'Tiempo', ''};
+Validacion(2:Comets,1:10) = [...
+    ExcelKMeans(2:Comets,6) ExcelFCM(2:Comets,6) ...
+    ExcelKMeans(2:Comets,7) ExcelFCM(2:Comets,7) ...
+    ExcelKMeans(2:Comets,8) ExcelFCM(2:Comets,8) ...
+    ExcelKMeans(2:Comets,9) ExcelFCM(2:Comets,9) ...
+    ExcelKMeans(2:Comets,10) ExcelFCM(2:Comets,10)];
+Resultados = [Excel ; ExcelKMeans ; ExcelFCM ; Validacion];
+if exist('Resultados.xls', 'file')==2
+  delete('Resultados.xls');
+end
+if exist('Patrones.xls', 'file')==2
+  delete('Patrones.xls');
+end
+xlswrite('Resultados', Resultados);
 csvwrite('Patrones', Patrones)

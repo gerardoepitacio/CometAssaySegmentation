@@ -1,6 +1,7 @@
-function [Comets] = GetComets(Stats)
+function [Comets] = GetComets(Stats, FileName)
 [Elements, cols] = size(Stats);
 Invalid = false(Elements, 1);
+disp(['Archivo: ', FileName])
 str = sprintf('%5s%10s%10s%10s%10s%10s%10s','#', 'Solidity', 'Symmetry', 'Hratio', 'CLD', 'Area', 'Valid');
 % str = sprintf('%5s%10s%10s%10s%10s%10s%10s%10s','#', 'Solidity', 'Symmetry', 'CLD', 'YCentroid', 'YRoi', 'Area', 'Valid');
 disp(str);
@@ -11,7 +12,7 @@ for i = 1 : Elements
     Log = sprintf('%5d',i);
     Valid = ' ';
      if Roi.Solidity < 0.5
-%        if Roi.Solidity < 0.85
+%        if Roi.Solidity < 0.85                             %Original OC
         Invalid(i) = true;
         Valid = '*';
     end
@@ -20,7 +21,7 @@ for i = 1 : Elements
     Valid = ' ';
     Symmetry = GetSymmetry(Roi);
      if Symmetry > 0.7
-%    if Symmetry > 0.5
+%    if Symmetry > 0.5                                      %Original OC
         Invalid(i) = true;
         Valid = '*';
     end
@@ -28,7 +29,7 @@ for i = 1 : Elements
     
     Valid = ' ';
     if (height / width) > 1.1    %Hratio
-%    if (height / width) > 1.05    %Hratio
+%    if (height / width) > 1.05    %Hratio                  %Original OC
         Invalid(i) = true;
         Valid = '*';
     end
@@ -36,8 +37,8 @@ for i = 1 : Elements
     
     Valid = ' ';
     CLD = abs(GetYFrontCentroid(Roi.Image) - height/2)/height;
-if CLD > 0.1
-%    if CLD > 0.2
+    if CLD > 0.1
+%    if CLD > 0.2                                           %Original OC
         Invalid(i) = true;
         Valid = '*';
     end
