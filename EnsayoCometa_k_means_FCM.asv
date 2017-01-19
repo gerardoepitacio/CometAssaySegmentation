@@ -77,7 +77,8 @@ for File = 1 : length(NombresArchivo)
         %% Mostrando resultados 
         hold on
         rectangle('Position', box(p,:), 'EdgeColor', 'green');
-        text(box(p,1)+7, box(p,2)+20, sprintf('%d', CometasProcesados), 'Color', 'green', 'FontSize', 14);
+        text(box(p,1)+7, box(p,2)+20, sprintf('%d', CometasProcesados), ...
+            'Color', 'green', 'FontSize', 14);
         hold off
         %% Regiones FCM y K-means.
 %         figure('NumberTitle', 'off', 'Name',[num2str(File) '-' num2str(p) ' K-Means & FCM'])

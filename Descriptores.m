@@ -29,8 +29,8 @@ for File=1 : length(FileNames)
     for p = 1 : boxLen
     Roi = s(p);
     [height, width] = size(Roi.Image);
-    YFrontCentroid = GetYFrontCentroid(Roi.Image);
-    YFrontCentroid = round(YFrontCentroid);
+    xFrontCentroid = GetXFrontCentroid(Roi.Image);
+    xFrontCentroid = round(xFrontCentroid);
     RegionImage = Roi.Image;
     [rows cols] = size(RegionImage)
     ResultImage=zeros(rows,cols,3);
@@ -44,7 +44,7 @@ for File=1 : length(FileNames)
                     ResultImage(j, i , 1) = 204;
                     ResultImage(j, i , 2) = 230;
                     ResultImage(j, i , 3) = 255;
-                if j == round(YFrontCentroid)
+                if j == round(xFrontCentroid)
                     ResultImage(j, i , 1) = 255;
                     ResultImage(j, i , 2) = 0;
                     ResultImage(j, i , 3) = 0;

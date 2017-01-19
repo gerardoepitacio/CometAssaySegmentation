@@ -1,5 +1,5 @@
 function g = localthresh(f, nhood, a, b, meantype)
-%LOCALTHRESH Local thresholding.
+% LOCALTHRESH Local thresholding.
 % G = LOCALTHRESH(F, NHOOD, A, B, MEANTYPE) thresholds image F by
 % computing a local threshold at the center,(x, y), of every
 % neighborhood in F. The size of the neighborhoods is defined by

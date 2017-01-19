@@ -1,5 +1,5 @@
 function mean = localmean(f, nhood)
-%LOCALMEAN Computes an array of local means.
+% LOCALMEAN Computes an array of local means.
 % MEAN = LOCALMEAN(F, NHOOD) computes the mean at the center of
 % every neighborhood of F defined by NHOOD, an array of zeros and
 % ones where the nonzero elements specify the neighbors used in the

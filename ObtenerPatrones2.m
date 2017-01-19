@@ -1,6 +1,6 @@
 function [paterns,Img] = ObtenerPatrones2(GrayImage, h, w)
 % ObtenerPatrones2 Version optimizada para obtener patrones.
-% Patrones = ObtenerPatrones(GrayImage, h, w);
+% [paterns,Img] = ObtenerPatrones2(GrayImage, h, w);
 % Donde:
 % GrayImage Es una imagen en escala de grises.
 % h         Es la altura o la cantidad de filas de la imagen.
@@ -12,7 +12,6 @@ function [paterns,Img] = ObtenerPatrones2(GrayImage, h, w)
 %               .
 %               .
 %               .
-
     GrayImage = im2double(GrayImage);
     GrayImage = imadjust(GrayImage, [min(GrayImage(:)), max(GrayImage(:))], [0 1]);
     stdImg = stdfilt(GrayImage, ones(11, 11));

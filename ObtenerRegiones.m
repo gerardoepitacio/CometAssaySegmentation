@@ -1,13 +1,19 @@
 function [Img, Areas] = ObtenerRegiones(Clases, Centro,m, n)
-% ObtenerRegiones, devuelve las regiones de una imagen a partir de la
-% matriz de pertenencia y la matriz de centroides devueltos del algoritmo
-% de clustering Fuzzy C-Means
-% Img = ObtenerRegiones(Clases, Centro,m, n)
+% Funcion ObtenerRegiones: Devuelve las regiones de una imagen a partir de 
+% la matriz de pertenencia y la matriz de centroides devueltos del
+% algoritmo de clustering Fuzzy C-Means.
+%
+% [Img, Areas] = ObtenerRegiones(Clases, Centro,m, n)
 % Donde: 
+% Img:      Imagen RGB con las regiones segmentada
+% Areas:    El conteo total de pixeles, Total en la region, Total en el
+%           fondo, Nucleo, Halo y Cola.
+%
 % Clases: Es la matriz de grados de pertenencia.
 % Centro: Es la matriz que contiene los patrones centroides.
 % m:      Numero de filas de la imagen.
 % n:      Numero de columnas en la imagen.
+%
 % La matriz de clases es ordenada respecto al valor de brillo de la matriz
 % de centroides, para asegurarse que las clases devueltas se obtienen
 % en funcion del brillo, es decir a menor clase, menor brillo tiene la

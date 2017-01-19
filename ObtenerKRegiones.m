@@ -1,15 +1,20 @@
 function [Img, Areas] = ObtenerKRegiones(ctrs, cidx, m, n)
-% ObtenerKRegiones, devuelve las regiones de una imagen a partir del vector
+% ObtenerKRegiones: Devuelve las regiones de una imagen a partir del vector
 % de indices generado por el algoritmo de clustering K-Means.
 %
-% Img = ObtenerKRegiones(ctrs, cidx, m, n)
+% [Img, Areas] = ObtenerKRegiones(ctrs, cidx, m, n)
 % Donde: 
-% ctrs:   Es la matriz de centroides de cada clase.
-% cidx:   Es el vector que contiene los indices de clase a los que
+% Img:      Imagen RGB con las regiones segmentada
+% Areas:    El conteo total de pixeles, Total en la region, Total en el
+%           fondo, Nucleo, Halo y Cola.
+%
+% ctrs:     Es la matriz de centroides de cada clase.
+% cidx:     Es el vector que contiene los indices de clase a los que
 % pertenece cada patron.
-% m:      Numero de filas de la subimagen.
-% n:      Numero de columnas en la subimagen.
-% la columna de brillo de cada vector centroide es obtenida y ordenada para
+% m:        Numero de filas de la subimagen.
+% n:        Numero de columnas en la subimagen.
+%
+% La columna de brillo de cada vector centroide es obtenida y ordenada para
 % poder corresponder un indice de clase a un valor de brillo y en
 % consecuencia a una region.
     VectorBrillo = ctrs(:, 1);
@@ -44,8 +49,5 @@ function [Img, Areas] = ObtenerKRegiones(ctrs, cidx, m, n)
         end
     end
     Areas = {'K-Means', Total, BG, Nucleo, Halo, Cola};
-    %str = sprintf('%5s%10s%10d%10d%10d%10d%10d', '', 'K-Means', Total, BG, Nucleo, Halo, Cola);
-    %disp(str);
-    
 end
 

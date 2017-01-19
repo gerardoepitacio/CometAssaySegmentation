@@ -1,0 +1,305 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>EnsayoCometa_k_means_FCM</title><meta name="generator" content="MATLAB 8.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-01-18"><meta name="DC.source" content="EnsayoCometa_k_means_FCM.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Select Image and thresholding.</a></li><li><a href="#3">Preprocesamiento</a></li><li><a href="#4">Binarizado y remocion.</a></li><li><a href="#5">Descripcion y descarte</a></li><li><a href="#6">Subimagen y Patrones</a></li><li><a href="#8">Obtener Patrones</a></li><li><a href="#9">K-MEANS</a></li><li><a href="#10">Guarda Resultados K-MEANS</a></li><li><a href="#11">FUZZY C-MEANS</a></li><li><a href="#12">Guarda Resultados FCM</a></li><li><a href="#13">Mostrando resultados</a></li><li><a href="#14">Regiones FCM y K-means.</a></li></ul></div><pre class="codeinput">clear
+clc
+clear <span class="string">all</span>
+close <span class="string">all</span>
+<span class="comment">% Quitamos advertencia: Image is too big to fit on screen</span>
+warning(<span class="string">'off'</span>, <span class="string">'Images:initSize:adjustingMag'</span>);
+</pre><h2>Select Image and thresholding.<a name="2"></a></h2><pre class="codeinput">[NombresArchivo, RutaPrincipal] = ReadFile();
+<span class="keyword">if</span> RutaPrincipal == 0
+    <span class="keyword">return</span>;
+<span class="keyword">end</span>
+
+Fila = 2;
+FilaFCM = 3;
+FilaKMeans = 3;
+CometasProcesados = 0;
+Excel = {<span class="string">'Imagen'</span>,<span class="string">'#'</span>, <span class="string">'#Img'</span>, <span class="string">'Algoritmo'</span>, <span class="string">'Pixeles'</span>, <span class="string">'Fondo'</span>, <span class="keyword">...</span>
+    <span class="string">'N&uacute;cleo'</span>, <span class="string">'Halo'</span>, <span class="string">'Cola'</span>, <span class="string">'Tiempo'</span>};
+ExcelFCM(2, 1:10) = {<span class="string">'RESULTADOS FCM'</span>,<span class="string">'#'</span>, <span class="string">'#'</span>, <span class="string">'Algoritmo'</span>, <span class="string">'FCM'</span>, <span class="keyword">...</span>
+    <span class="string">'FCM'</span>, <span class="string">'FCM'</span>, <span class="string">'FCM'</span>, <span class="string">'FCM'</span>, <span class="string">'FCM'</span>};
+ExcelKMeans(2, 1:10) = {<span class="string">'RESULTADOS K-Means'</span>,<span class="string">'#'</span>, <span class="string">'#'</span>, <span class="string">'Algoritmo'</span>, <span class="keyword">...</span>
+    <span class="string">'K-Means'</span>, <span class="string">'K-Means'</span>, <span class="string">'K-Means'</span>, <span class="string">'K-Means'</span>, <span class="string">'K-Means'</span>, <span class="string">'K-Means'</span>};
+
+<span class="keyword">for</span> File = 1 : length(NombresArchivo)
+</pre><h2>Preprocesamiento<a name="3"></a></h2><pre class="codeinput">    [Ruta, Archivo] = ObtenerArchivo(RutaPrincipal, NombresArchivo, File);
+    ImagenActual = imread(Ruta);
+    [Filtrada, Gris] = PreprocesarImagen(ImagenActual);
+</pre><h2>Binarizado y remocion.<a name="4"></a></h2><pre class="codeinput">    tsd = localthresh(Filtrada, ones(3), 1, 1.1, <span class="string">'global'</span>);
+    bwW = bwareaopen(tsd, 3000);
+    bw = imclearborder(bwW);
+</pre><h2>Descripcion y descarte<a name="5"></a></h2><pre class="codeinput">    s = DescartarCometas(ImagenActual, bw, Archivo);
+</pre><pre class="codeoutput">
+Archivo: 0309120ctol.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.9439    0.1514    1.0730    0.0354   14506.00     Valid
+    2   0.8886    0.2084    1.0325    0.0239   15236.00     Valid
+    3   0.9164    0.1753    0.9539    0.0456   14933.00     Valid
+    4   0.9787    0.2209    0.7528    0.1080*  20495.00   Invalid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_01.png" alt=""> <pre class="codeoutput">
+Archivo: 0309120ctol2.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.6721    0.2042    0.4755    0.0198   49067.00     Valid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_05.png" alt=""> <pre class="codeoutput">
+Archivo: 0309120ctol3.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.9152    0.0965    1.0000    0.0300   16930.00     Valid
+    2   0.5935    0.4213    0.6154    0.0146   10639.00     Valid
+    3   0.9305    0.1107    1.0263    0.0273   16448.00     Valid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_07.png" alt=""> <pre class="codeoutput">
+Archivo: 0309120ctol4.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.9214    0.1345    0.9068    0.0592   15249.00     Valid
+    2   0.5431    0.4698    0.3945    0.0602   32667.00     Valid
+    3   0.8972    0.1012    0.8951    0.0374   16263.00     Valid
+    4   0.9513    0.2591    0.9259    0.0947    4237.00     Valid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_11.png" alt=""> <pre class="codeoutput">
+Archivo: 0309120ctol5.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.9246    0.1395    0.9618    0.0509   16625.00     Valid
+    2   0.8779    0.1590    0.9056    0.0428   17810.00     Valid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_16.png" alt=""> <pre class="codeoutput">
+Archivo: 0309120t0 1.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.7840    0.2467    0.6574    0.0114   24419.00     Valid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_19.png" alt=""> <pre class="codeoutput">
+Archivo: 0309120t0 2.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.8989    0.2095    0.9605    0.0061   15258.00     Valid
+    2   0.8558    0.3248    0.8119    0.0600   20221.00     Valid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_21.png" alt=""> <pre class="codeoutput">
+Archivo: 0309120t0 3.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.8221    0.1679    0.6213    0.0429   35944.00     Valid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_24.png" alt=""> <pre class="codeoutput">
+Archivo: 0309120t0 6.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.7364    0.2836    0.4313    0.0453   52484.00     Valid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_26.png" alt=""> <pre class="codeoutput">
+Archivo: 0309120t30 4.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.8481    0.0953    1.1657*   0.0219   21651.00   Invalid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_28.png" alt=""> <pre class="codeoutput">
+Archivo: 0309120t60 2.bmp
+    #  Solidity Asymmetry    Hratio       CLD      Area     Valid
+    1   0.6405    0.2104    0.3339    0.0340   52467.00     Valid
+    2   0.6509    0.3510    0.5634    0.0038   45611.00     Valid
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_29.png" alt=""> <h2>Subimagen y Patrones<a name="6"></a></h2><pre class="codeinput">    box = cat(1, s.BoundingBox);
+    [CantidadCometas, col] = size(box);
+    Excel(Fila, 1) = {Archivo};
+    ExcelFCM(FilaFCM, 1) = {Archivo};
+    ExcelKMeans(FilaKMeans, 1) = {Archivo};
+    <span class="keyword">for</span> p = 1 : CantidadCometas
+</pre><pre class="codeinput">        CometasProcesados = CometasProcesados + 1;
+        Excel(Fila, 2) = {p};
+        Excel(Fila, 3) = {CometasProcesados};
+</pre><h2>Obtener Patrones<a name="8"></a></h2><pre class="codeinput">        subImagen = imcrop(Gris, (box(p,:)-1));
+        [m, n, c] = size(subImagen);
+        Patrones = ObtenerPatrones(subImagen, m, n);
+</pre><h2>K-MEANS<a name="9"></a></h2><pre class="codeinput">        tic
+        [cidx, ctrs] = kmeans(Patrones, 4);
+        Tiempo = toc;
+        [img, Areas] = ObtenerKRegiones(ctrs, cidx, m, n);
+</pre><h2>Guarda Resultados K-MEANS<a name="10"></a></h2><pre class="codeinput">        Excel(Fila, 4:9) = Areas;
+        Excel(Fila, 10) = {Tiempo};
+        ExcelKMeans(FilaKMeans, 2:10) = Excel(Fila, 2:10);
+        Fila = Fila + 1;
+        FilaKMeans = FilaKMeans + 1;
+</pre><h2>FUZZY C-MEANS<a name="11"></a></h2><pre class="codeinput">        opts = [nan;nan;nan;0];
+        tic
+        [centers, U, obj_fcn] = fcm(Patrones, 4, opts);
+        Tiempo = toc;
+        [Regiones, Areas]= ObtenerRegiones(U, centers, m, n);
+</pre><h2>Guarda Resultados FCM<a name="12"></a></h2><pre class="codeinput">        Excel(Fila, 2) = {p};
+        Excel(Fila, 3) = {CometasProcesados};
+        Excel(Fila, 4:9) = Areas;
+        Excel(Fila, 10) = {Tiempo};
+        ExcelFCM(FilaFCM, 2:10) = Excel(Fila, 2:10);
+        Fila = Fila + 1;
+        FilaFCM = FilaFCM + 1;
+</pre><h2>Mostrando resultados<a name="13"></a></h2><pre class="codeinput">        hold <span class="string">on</span>
+        rectangle(<span class="string">'Position'</span>, box(p,:), <span class="string">'EdgeColor'</span>, <span class="string">'green'</span>);
+        text(box(p,1)+7, box(p,2)+20, sprintf(<span class="string">'%d'</span>, CometasProcesados), <span class="string">'Color'</span>, <span class="string">'green'</span>, <span class="string">'FontSize'</span>, 14);
+        hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_02.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_03.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_04.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_06.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_08.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_09.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_10.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_12.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_13.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_14.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_15.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_17.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_18.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_20.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_22.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_23.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_25.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_27.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_30.png" alt=""> <img vspace="5" hspace="5" src="EnsayoCometa_k_means_FCM_31.png" alt=""> <h2>Regiones FCM y K-means.<a name="14"></a></h2><pre>       figure('NumberTitle', 'off', 'Name',[num2str(File) '-' num2str(p) ' K-Means &amp; FCM'])
+       hold on
+       subplot(1,2,1), subimage(img)
+       title('K-Means')
+       subplot(1,2,2), subimage(Regiones)
+       title('FCM')
+       hold off</pre><pre class="codeinput">    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> ischar(NombresArchivo) == 1
+        <span class="keyword">break</span>;
+    <span class="keyword">end</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>
+FilaFin = CometasProcesados + 2;
+ExportarDatos(Patrones, Excel, ExcelKMeans, ExcelFCM, FilaFin);
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+clear
+clc
+clear all
+close all
+% Quitamos advertencia: Image is too big to fit on screen
+warning('off', 'Images:initSize:adjustingMag');
+%% Select Image and thresholding.
+[NombresArchivo, RutaPrincipal] = ReadFile();
+if RutaPrincipal == 0
+    return;
+end
+
+Fila = 2;
+FilaFCM = 3;
+FilaKMeans = 3;
+CometasProcesados = 0;
+Excel = {'Imagen','#', '#Img', 'Algoritmo', 'Pixeles', 'Fondo', ...
+    'Núcleo', 'Halo', 'Cola', 'Tiempo'};
+ExcelFCM(2, 1:10) = {'RESULTADOS FCM','#', '#', 'Algoritmo', 'FCM', ...
+    'FCM', 'FCM', 'FCM', 'FCM', 'FCM'};
+ExcelKMeans(2, 1:10) = {'RESULTADOS K-Means','#', '#', 'Algoritmo', ...
+    'K-Means', 'K-Means', 'K-Means', 'K-Means', 'K-Means', 'K-Means'};
+
+for File = 1 : length(NombresArchivo)
+    %% Preprocesamiento
+    [Ruta, Archivo] = ObtenerArchivo(RutaPrincipal, NombresArchivo, File);
+    ImagenActual = imread(Ruta);
+    [Filtrada, Gris] = PreprocesarImagen(ImagenActual);
+    
+    %% Binarizado y remocion.
+    tsd = localthresh(Filtrada, ones(3), 1, 1.1, 'global');
+    bwW = bwareaopen(tsd, 3000);
+    bw = imclearborder(bwW);
+    
+    %% Descripcion y descarte
+    s = DescartarCometas(ImagenActual, bw, Archivo);
+    
+    %% Subimagen y Patrones
+    box = cat(1, s.BoundingBox);
+    [CantidadCometas, col] = size(box);
+    Excel(Fila, 1) = {Archivo};
+    ExcelFCM(FilaFCM, 1) = {Archivo};
+    ExcelKMeans(FilaKMeans, 1) = {Archivo};
+    for p = 1 : CantidadCometas
+        CometasProcesados = CometasProcesados + 1;
+        Excel(Fila, 2) = {p};
+        Excel(Fila, 3) = {CometasProcesados};
+        %% Obtener Patrones
+        subImagen = imcrop(Gris, (box(p,:)-1));
+        [m, n, c] = size(subImagen);
+        Patrones = ObtenerPatrones(subImagen, m, n);
+        %% K-MEANS
+        tic
+        [cidx, ctrs] = kmeans(Patrones, 4);
+        Tiempo = toc;
+        [img, Areas] = ObtenerKRegiones(ctrs, cidx, m, n);
+        %% Guarda Resultados K-MEANS
+        Excel(Fila, 4:9) = Areas;
+        Excel(Fila, 10) = {Tiempo};
+        ExcelKMeans(FilaKMeans, 2:10) = Excel(Fila, 2:10); 
+        Fila = Fila + 1;
+        FilaKMeans = FilaKMeans + 1;
+        %% FUZZY C-MEANS
+        opts = [nan;nan;nan;0];
+        tic
+        [centers, U, obj_fcn] = fcm(Patrones, 4, opts);
+        Tiempo = toc;
+        [Regiones, Areas]= ObtenerRegiones(U, centers, m, n);
+        %% Guarda Resultados FCM
+        Excel(Fila, 2) = {p};
+        Excel(Fila, 3) = {CometasProcesados};
+        Excel(Fila, 4:9) = Areas;
+        Excel(Fila, 10) = {Tiempo};
+        ExcelFCM(FilaFCM, 2:10) = Excel(Fila, 2:10); 
+        Fila = Fila + 1;
+        FilaFCM = FilaFCM + 1;
+        %% Mostrando resultados 
+        hold on
+        rectangle('Position', box(p,:), 'EdgeColor', 'green');
+        text(box(p,1)+7, box(p,2)+20, sprintf('%d', CometasProcesados), 'Color', 'green', 'FontSize', 14);
+        hold off
+        %% Regiones FCM y K-means.
+%         figure('NumberTitle', 'off', 'Name',[num2str(File) '-' num2str(p) ' K-Means & FCM'])
+%         hold on
+%         subplot(1,2,1), subimage(img)
+%         title('K-Means')
+%         subplot(1,2,2), subimage(Regiones)
+%         title('FCM')
+%         hold off
+    end
+    
+    if ischar(NombresArchivo) == 1
+        break;
+    end
+end
+FilaFin = CometasProcesados + 2;
+ExportarDatos(Patrones, Excel, ExcelKMeans, ExcelFCM, FilaFin);
+
+##### SOURCE END #####
+--></body></html>
