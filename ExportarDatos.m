@@ -1,13 +1,17 @@
-function ExportarDatos(Patrones, Excel, ExcelKMeans, ExcelFCM, FilaFin)
-% Exporta los datos generados durante el proceso de segmentacion.
-% 
-% Donde:
-% Patrones: Son los patrones del ultimo cometa procesado.
-% Excel:    Contiene el detalle general del proceso
-% ExcelKMeans:  Contiene solo los resultados de K-Means
-% ExcelFCM: Contiene solo los resultados de FCM
-% FilaFin:  La fila donde comenzada a sumarse los demas datos al archivo
-% Excel
+function ExportarDatos()
+% Funcion ExportarDatos: Exporta los datos generados durante el proceso de 
+% segmentacion a un archivo excel llamado Resultados.xls que contiene los 
+% siguientes datos:
+%
+% 1.- El conjunto de datos donde por cada cometa la primer fila contiene 
+% los resultados generados por el algorimo de clustering K-Means y la 
+% segunda por el algoritmo Fuzzy C-Means.
+% 2.- El mismo conjunto de datos anterior, solo que se separan los 
+% resultados de K-Means y Fuzzy C-Means en dos apartados.
+% 3.- El conjunto de datos formateados de tal manera que facilite el 
+% analisis a traves del test de ANOVA.
+global Excel ExcelKMeans ExcelFCM CometasProcesados RutaResultados;
+FilaFin = CometasProcesados + 2;
 Validacion(1, 1:10) = {'Fondo', '', 'Nucleo', '', 'Halo', '', 'Cola', ...
     '', 'Tiempo', ''};
 Validacion(2:FilaFin, 1:10) = [...
@@ -16,14 +20,10 @@ Validacion(2:FilaFin, 1:10) = [...
     ExcelKMeans(2:FilaFin, 8) ExcelFCM(2:FilaFin, 8) ...
     ExcelKMeans(2:FilaFin, 9) ExcelFCM(2:FilaFin, 9) ...
     ExcelKMeans(2:FilaFin, 10) ExcelFCM(2:FilaFin, 10)];
-
 Resultados = [Excel ; ExcelKMeans ; ExcelFCM ; Validacion];
-if exist('Resultados.xls', 'file') == 2
-  delete('Resultados.xls');
+
+if exist([RutaResultados 'Resultados.xls'], 'file') == 2
+  delete([RutaResultados 'Resultados.xls']);
 end
-if exist('Patrones.xls', 'file') == 2
-  delete('Patrones.xls');
-end
-xlswrite('Resultados', Resultados);
-csvwrite('Patrones', Patrones)
+xlswrite([RutaResultados 'Resultados'], Resultados);
 end

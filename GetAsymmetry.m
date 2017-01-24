@@ -1,10 +1,8 @@
 function Asymmetry = GetAsymmetry(Roi)
-% Funcion GetAsymmetry: El valor asimetrico de la region.
-% Asymmetry = GetAsymmetry(Roi)
+% Funcion GetAsymmetry: Devuelve el valor asimetrico de la region.
 %
 % Donde: 
-% Roi: Es es el arreglo de descriptores
-%      Roi = Stats(i)
+% Roi: Es es el arreglo de descriptores generadas por, Roi = Stats(i).
 ImgRoi = Roi.Image;
 [rows cols] = size(ImgRoi);
 absdy = 0.0;

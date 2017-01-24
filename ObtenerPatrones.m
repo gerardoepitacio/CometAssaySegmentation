@@ -1,9 +1,9 @@
 function Patrones = ObtenerPatrones(Imagen, h, w)
-% Funcion ObtenerPatrones: Devuelve los patrones de la imagen en escala de
-% grises.
-% [Patrones,Img] = ObtenerPatrones(Imagen, h, w);
+% Funcion ObtenerPatrones: Devuelve los patrones de la imagen en escala 
+% de grises.
+%
 % Donde:
-% Imagen Es una imagen en escala de grises.
+% Imagen    Es una imagen en escala de grises.
 % h         Es la altura o la cantidad de filas de la imagen.
 % w         Es el ancho de la imagen o la cantidad de columnas.
 %

@@ -1,13 +1,14 @@
 function Propiedades = DescartarCometas(ImagenRGB, ImgBinaria, Archivo)
-% Funcion DescartarCometas(): Obtiene los descriptores de la imagen binaria
-% y descarta los cometas que no cumplen con los parametros establecidos.
+% Funcion DescartarCometas: Obtiene los descriptores de la imagen binaria
+% y descarta los descriptores que no cumplen con los parametros 
+% establecidos para ser aceptados como cometas.
 %
 % Donde:
-% ImagenRGB:    Es la imagen original RGB
-% ImgBinaria:   Es la imagen binaria del proceso anterior al descarte
-% Archivo:      Es el nombre del archivo.
-    Propiedades = regionprops(ImgBinaria,  'Area', 'BoundingBox', 'Image', ...
-     'Solidity');
+% ImagenRGB:  Es la imagen original RGB
+% ImgBinaria: Es la imagen binaria generada despues del preprocesamiento
+% Archivo:    Es el nombre del archivo que actualmente se esta procesando.
+    Propiedades = regionprops(ImgBinaria,  'Area', 'BoundingBox', ...
+        'Image', 'Solidity');
     figure('NumberTitle', 'off', 'Name', Archivo), imshow(ImagenRGB);
     box = cat(1, Propiedades.BoundingBox);
     ROIs = size(box);

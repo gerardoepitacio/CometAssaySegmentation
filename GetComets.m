@@ -2,11 +2,10 @@ function Comets = GetComets(Stats, FileName)
 % Funcion GetComets: Devuelve los cometas que son validos para ser
 % procesados como cometas.
 %
-% Comets = GetComets(Stats, FileName)
 % Donde: 
-% Stats: son las estadisticas generadas por la funcion regionprops
+% Stats:    Son las estadisticas generadas por la funcion regionprops
 % FileName: Es el nombre del archivo de donde se obtuvieron las
-% estadisticas recibidas.
+%           estadisticas recibidas.
 [Elements, cols] = size(Stats);
 Invalid = false(Elements, 1);
 disp(['Archivo: ', FileName])
@@ -19,7 +18,6 @@ for i = 1 : Elements
     Log = sprintf('%5d',i);
     Valid = ' ';
      if Roi.Solidity < 0.5
-%        if Roi.Solidity < 0.85                             %Original OC
         Invalid(i) = true;
         Valid = '*';
     end
@@ -28,7 +26,6 @@ for i = 1 : Elements
     Valid = ' ';
     Asymmetry = GetAsymmetry(Roi);
      if Asymmetry > 0.7
-%    if Asymmetry > 0.5                                      %Original OC
         Invalid(i) = true;
         Valid = '*';
     end
@@ -36,7 +33,6 @@ for i = 1 : Elements
     
     Valid = ' ';
     if (height / width) > 1.1    %Hratio
-%    if (height / width) > 1.05    %Hratio                  %Original OC
         Invalid(i) = true;
         Valid = '*';
     end
@@ -45,7 +41,6 @@ for i = 1 : Elements
     Valid = ' ';
     CLD = abs(GetXFrontCentroid(Roi.Image) - height/2)/height;
     if CLD > 0.1
-%    if CLD > 0.2                                           %Original OC
         Invalid(i) = true;
         Valid = '*';
     end
@@ -56,7 +51,6 @@ for i = 1 : Elements
     else 
         Log = [Log sprintf('%10s', 'Valid')];
     end
-    
     disp(Log);
 end
 

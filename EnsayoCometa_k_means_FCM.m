@@ -1,29 +1,26 @@
+% Script principal que lleva a cabo el proceso de segmentacion de imagenes 
+% del ensayo cometa con los algoritmos K-Means y Fuzzy C-Means.
 clear
 clc
 clear all
 close all
 % Quitamos advertencia: Image is too big to fit on screen
 warning('off', 'Images:initSize:adjustingMag');
-%% Select Image and thresholding.
+
+global NombresArchivo RutaPrincipal RutaResultados;
+global Fila FilaFCM FilaKMeans CometasProcesados ;
+global Excel ExcelKMeans ExcelFCM;
+
 [NombresArchivo, RutaPrincipal] = ReadFile();
 if RutaPrincipal == 0
     return;
 end
 
-Fila = 2;
-FilaFCM = 3;
-FilaKMeans = 3;
-CometasProcesados = 0;
-Excel = {'Imagen','#', '#Img', 'Algoritmo', 'Pixeles', 'Fondo', ...
-    'Núcleo', 'Halo', 'Cola', 'Tiempo'};
-ExcelFCM(2, 1:10) = {'RESULTADOS FCM','#', '#', 'Algoritmo', 'FCM', ...
-    'FCM', 'FCM', 'FCM', 'FCM', 'FCM'};
-ExcelKMeans(2, 1:10) = {'RESULTADOS K-Means','#', '#', 'Algoritmo', ...
-    'K-Means', 'K-Means', 'K-Means', 'K-Means', 'K-Means', 'K-Means'};
+InicializarEntorno();
 
 for File = 1 : length(NombresArchivo)
     %% Preprocesamiento
-    [Ruta, Archivo] = ObtenerArchivo(RutaPrincipal, NombresArchivo, File);
+    [Ruta, Archivo] = ObtenerArchivo(File);
     ImagenActual = imread(Ruta);
     [Filtrada, Gris] = PreprocesarImagen(ImagenActual);
     
@@ -53,7 +50,7 @@ for File = 1 : length(NombresArchivo)
         tic
         [cidx, ctrs] = kmeans(Patrones, 4);
         Tiempo = toc;
-        [img, Areas] = ObtenerKRegiones(ctrs, cidx, m, n);
+        [RegionesKMeans, Areas] = ObtenerKRegiones(ctrs, cidx, m, n);
         %% Guarda Resultados K-MEANS
         Excel(Fila, 4:9) = Areas;
         Excel(Fila, 10) = {Tiempo};
@@ -65,7 +62,7 @@ for File = 1 : length(NombresArchivo)
         tic
         [centers, U, obj_fcn] = fcm(Patrones, 4, opts);
         Tiempo = toc;
-        [Regiones, Areas]= ObtenerRegiones(U, centers, m, n);
+        [RegionesFCM, Areas]= ObtenerRegiones(U, centers, m, n);
         %% Guarda Resultados FCM
         Excel(Fila, 2) = {p};
         Excel(Fila, 3) = {CometasProcesados};
@@ -74,24 +71,28 @@ for File = 1 : length(NombresArchivo)
         ExcelFCM(FilaFCM, 2:10) = Excel(Fila, 2:10); 
         Fila = Fila + 1;
         FilaFCM = FilaFCM + 1;
-        %% Mostrando resultados 
+        %% Mostrar y guardar resultados 
         hold on
         rectangle('Position', box(p,:), 'EdgeColor', 'green');
-        text(box(p,1)+7, box(p,2)+20, sprintf('%d', CometasProcesados), 'Color', 'green', 'FontSize', 14);
+        text(box(p,1)+7, box(p,2)+20, sprintf('%d', CometasProcesados), ...
+            'Color', 'green', 'FontSize', 14);
         hold off
-        %% Regiones FCM y K-means.
-%         figure('NumberTitle', 'off', 'Name',[num2str(File) '-' num2str(p) ' K-Means & FCM'])
-%         hold on
-%         subplot(1,2,1), subimage(img)
-%         title('K-Means')
-%         subplot(1,2,2), subimage(Regiones)
-%         title('FCM')
-%         hold off
+        set(gca,'position',[0 0 1 1],'units','normalized');
+        print([RutaResultados Archivo], '-dbmp');
+        
+        ExportarImagen(RutaResultados, ['KMeans' ...
+            num2str(CometasProcesados)], RegionesKMeans);
+        ExportarImagen(RutaResultados, ['FCM' ...
+            num2str(CometasProcesados)], RegionesFCM);
+        %% exportar patrones del cometa.
+        ExportarPatrones(RutaResultados, ['Patrones' ...
+            num2str(CometasProcesados)], Patrones);
     end
-    
     if ischar(NombresArchivo) == 1
         break;
     end
 end
-FilaFin = CometasProcesados + 2;
-ExportarDatos(Patrones, Excel, ExcelKMeans, ExcelFCM, FilaFin);
+[pFondo, pNucleo, pHalo, pCola, pTiempo] = AnalisisAnova()
+ExportarDatos();
+
+

@@ -1,11 +1,9 @@
 function xCentroid = GetXFrontCentroid(ImgRoi)
-% Funcion GetXFrontCentroid: Devuelve el centroide frontal de la imagen del
-% ROI.
+% Funcion GetXFrontCentroid: Devuelve el centroide frontal de la imagen 
+% del ROI.
 %
-% xCentroid = GetXFrontCentroid(ImgRoi)
 % Donde: 
-% ImgRoi: Es la imagen binaria del ROI
-%         ImgRoi = Roi.Image
+% ImgRoi: Es la imagen binaria del ROI, ImgRoi = Roi.Image
 xFrontCentroid = 0.0;
 cnt = 0;
 [rows cols] = size(ImgRoi);
