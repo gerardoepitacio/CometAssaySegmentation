@@ -15,5 +15,5 @@ funcion Respuesta = uLocal(Imagen, Vecindario, a, b, TipoPromedio)
             g(i,j) = (MayorDStd & MayorMPromedios) ? 1 : 0
         fin para
     fin para
-    ImagenBinaria = g
+    Respuesta = g
 fin funcion

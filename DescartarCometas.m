@@ -9,7 +9,7 @@ function Propiedades = DescartarCometas(ImagenRGB, ImgBinaria, Archivo)
 % Archivo:    Es el nombre del archivo que actualmente se esta procesando.
     Propiedades = regionprops(ImgBinaria,  'Area', 'BoundingBox', ...
         'Image', 'Solidity');
-    figure('NumberTitle', 'off', 'Name', Archivo), imshow(ImagenRGB);
+    %figure('NumberTitle', 'off', 'Name', Archivo), imshow(ImagenRGB);
     box = cat(1, Propiedades.BoundingBox);
     ROIs = size(box);
     hold on

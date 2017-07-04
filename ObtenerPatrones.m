@@ -29,7 +29,7 @@ function Patrones = ObtenerPatrones(Imagen, h, w)
             Patrones(k, 1) = Respuesta(i+5,j+5);
             Patrones(k, 2) = stdImg(i,j);
             Patrones(k, 3) = mean2(SumM);
-            Img(i, j) = Patrones(k, 3);
+            Img(i, j) = Patrones(k, 1);
             k = k+1;
         end
     end

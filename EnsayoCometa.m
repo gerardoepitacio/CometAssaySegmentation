@@ -43,38 +43,102 @@ for File=1 : length(FileNames)
         figure,imshow(Regiones);
          
     %% plotting
-    % %     figure,plot(Patrones(:,1),Patrones(:,2),'o');
-    % %              xlabel('Pixel Value')
-    % %              ylabel('std')
-    % %              
-    % %                 B=U;
-    % % B(:,m*n+1)= centers(:,1);
-    % % B = sortrows(B,m*n+1);
-    % % centers = sortrows(centers,1);
-    % % 
-    % %     B(:,m*n+1) = [];
-    % % U = B;
-    % % 
-    % %              
-    % %     maxU = max(U);
-    % %     index1 = find(U(1,:)== maxU);
-    % %     index2 = find(U(2,:)== maxU);
-    % %     index3 = find(U(3,:)== maxU);
-    % %     index4 = find(U(4,:)== maxU);
-    % %     line(Patrones(index1,1),Patrones(index1,2),'linestyle','-',...
-    % %          'marker','*','color','k');
-    % %     line(Patrones(index2,1),Patrones(index2,2),'linestyle','-',...
-    % %          'marker', '*','color','g');
-    % %      line(Patrones(index3,1),Patrones(index3,2),'linestyle','-',...
-    % %          'marker', '*','color','b');
-    % %      line(Patrones(index4,1),Patrones(index4,2),'linestyle','-',...
-    % %          'marker', '*','color','r');
-    % %     hold on
-    % %     plot(centers(1,1),centers(1,2),'xk','MarkerSize',15,'LineWidth',3);
-    % %     plot(centers(2,1),centers(2,2),'xk','MarkerSize',15,'LineWidth',3);
-    % %     plot(centers(3,1),centers(3,2),'xk','MarkerSize',15,'LineWidth',3);
-    % %     plot(centers(4,1),centers(4,2),'xk','MarkerSize',15,'LineWidth',3);
-    % %     hold off
+        figure,plot(Patrones(:,1),Patrones(:,2),'o');
+                 xlabel('Pixel Value')
+                 ylabel('std')
+                 B=U;
+        B(:,m*n+1)= centers(:,1);
+        B = sortrows(B,m*n+1);
+        centers = sortrows(centers,1);
+    
+        B(:,m*n+1) = [];
+        U = B;
+        
+        maxU = max(U);
+        index1 = find(U(1,:)== maxU);
+        index2 = find(U(2,:)== maxU);
+        index3 = find(U(3,:)== maxU);
+        index4 = find(U(4,:)== maxU);
+        line(Patrones(index1,1),Patrones(index1,2),'linestyle','-',...
+             'marker','*','color','k');
+        line(Patrones(index2,1),Patrones(index2,2),'linestyle','-',...
+             'marker', '*','color','g');
+         line(Patrones(index3,1),Patrones(index3,2),'linestyle','-',...
+             'marker', '*','color','b');
+         line(Patrones(index4,1),Patrones(index4,2),'linestyle','-',...
+             'marker', '*','color','r');
+        hold on
+        plot(centers(1,1),centers(1,2),'xk','MarkerSize',15,'LineWidth',3);
+        plot(centers(2,1),centers(2,2),'xk','MarkerSize',15,'LineWidth',3);
+        plot(centers(3,1),centers(3,2),'xk','MarkerSize',15,'LineWidth',3);
+        plot(centers(4,1),centers(4,2),'xk','MarkerSize',15,'LineWidth',3);
+        hold off
+        
+        
+        %% pixel value, mean
+        figure,plot(Patrones(:,1),Patrones(:,3),'o');
+                 xlabel('Pixel Value')
+                 ylabel('std')
+                 B=U;
+        B(:,m*n+1)= centers(:,1);
+        B = sortrows(B,m*n+1);
+        centers = sortrows(centers,1);
+    
+        B(:,m*n+1) = [];
+        U = B;
+        
+        maxU = max(U);
+        index1 = find(U(1,:)== maxU);
+        index2 = find(U(2,:)== maxU);
+        index3 = find(U(3,:)== maxU);
+        index4 = find(U(4,:)== maxU);
+        line(Patrones(index1,1),Patrones(index1,2),'linestyle','-',...
+             'marker','*','color','k');
+        line(Patrones(index2,1),Patrones(index2,2),'linestyle','-',...
+             'marker', '*','color','g');
+         line(Patrones(index3,1),Patrones(index3,2),'linestyle','-',...
+             'marker', '*','color','b');
+         line(Patrones(index4,1),Patrones(index4,2),'linestyle','-',...
+             'marker', '*','color','r');
+        hold on
+        plot(centers(1,1),centers(1,2),'xk','MarkerSize',15,'LineWidth',3);
+        plot(centers(2,1),centers(2,2),'xk','MarkerSize',15,'LineWidth',3);
+        plot(centers(3,1),centers(3,2),'xk','MarkerSize',15,'LineWidth',3);
+        plot(centers(4,1),centers(4,2),'xk','MarkerSize',15,'LineWidth',3);
+        hold off
+        
+        %% std vs prom
+        figure,plot(Patrones(:,2),Patrones(:,3),'o');
+                 xlabel('Pixel Value')
+                 ylabel('std')
+                 B=U;
+        B(:,m*n+1)= centers(:,1);
+        B = sortrows(B,m*n+1);
+        centers = sortrows(centers,1);
+    
+        B(:,m*n+1) = [];
+        U = B;
+        
+        maxU = max(U);
+        index1 = find(U(1,:)== maxU);
+        index2 = find(U(2,:)== maxU);
+        index3 = find(U(3,:)== maxU);
+        index4 = find(U(4,:)== maxU);
+        line(Patrones(index1,1),Patrones(index1,2),'linestyle','-',...
+             'marker','*','color','k');
+        line(Patrones(index2,1),Patrones(index2,2),'linestyle','-',...
+             'marker', '*','color','g');
+         line(Patrones(index3,1),Patrones(index3,2),'linestyle','-',...
+             'marker', '*','color','b');
+         line(Patrones(index4,1),Patrones(index4,2),'linestyle','-',...
+             'marker', '*','color','r');
+        hold on
+        plot(centers(1,1),centers(1,2),'xk','MarkerSize',15,'LineWidth',3);
+        plot(centers(2,1),centers(2,2),'xk','MarkerSize',15,'LineWidth',3);
+        plot(centers(3,1),centers(3,2),'xk','MarkerSize',15,'LineWidth',3);
+        plot(centers(4,1),centers(4,2),'xk','MarkerSize',15,'LineWidth',3);
+        hold off
+        
 
     end
     

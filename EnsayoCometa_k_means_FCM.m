@@ -23,15 +23,14 @@ for File = 1 : length(NombresArchivo)
     [Ruta, Archivo] = ObtenerArchivo(File);
     ImagenActual = imread(Ruta);
     [Filtrada, Gris] = PreprocesarImagen(ImagenActual);
-    
+    iptsetpref('ImshowBorder','tight')
     %% Binarizado y remocion.
     tsd = localthresh(Filtrada, ones(3), 1, 1.1, 'global');
     bwW = bwareaopen(tsd, 3000);
     bw = imclearborder(bwW);
-    
+    figure,imshow(bw);
     %% Descripcion y descarte
     s = DescartarCometas(ImagenActual, bw, Archivo);
-    
     %% Subimagen y Patrones
     box = cat(1, s.BoundingBox);
     [CantidadCometas, col] = size(box);
@@ -51,6 +50,7 @@ for File = 1 : length(NombresArchivo)
         [cidx, ctrs] = kmeans(Patrones, 4);
         Tiempo = toc;
         [RegionesKMeans, Areas] = ObtenerKRegiones(ctrs, cidx, m, n);
+        %figure,imshow(RegionesKMeans);
         %% Guarda Resultados K-MEANS
         Excel(Fila, 4:9) = Areas;
         Excel(Fila, 10) = {Tiempo};
